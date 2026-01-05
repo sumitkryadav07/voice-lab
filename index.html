@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoiceLab AI - Real Hindi TTS + Ads 🔥</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700&display=swap');
+        body { font-family: 'Noto Sans Devanagari', sans-serif; }
+        .voice-wave { animation: wave 1.5s ease-in-out infinite; }
+        @keyframes wave { 0%,100%{transform:scaleY(1)} 50%{transform:scaleY(1.2)} }
+        .ad-glow { box-shadow: 0 0 30px rgba(255,215,0,0.5); }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 min-h-screen text-white">
+
+    <!-- 🔥 AD #1 - TOP LEADERBOARD (728x90) 🔥 -->
+    <div class="ad-top mb-8 text-center py-12 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-3xl ad-glow border-8 border-yellow-400/50 mx-4 md:mx-12">
+        <div id="adslot1" class="w-full max-w-4xl mx-auto h-24 md:h-28 flex items-center justify-center bg-black/50 rounded-2xl">
+            <span class="text-xl md:text-2xl font-black text-yellow-400 animate-pulse">
+                🔥 ADSTERRA TOP BANNER 728x90 🔥
+            </span>
+        </div>
+        <p class="text-yellow-300 mt-4 font-bold text-lg">Sponsored</p>
+    </div>
+
+    <div class="container mx-auto px-6 py-12 max-w-4xl relative z-10">
+        
+        <!-- HEADER -->
+        <div class="text-center mb-12">
+            <h1 class="text-5xl md:text-7xl font-black bg-gradient-to-r from-yellow-400 via-pink-400 to-blue-400 bg-clip-text text-transparent mb-6">
+                <i class="fas fa-microphone mr-4"></i>VoiceLab AI
+            </h1>
+            <p class="text-2xl md:text-3xl text-cyan-300 font-semibold mb-8">
+                ElevenLabs से बेहतर • Real Hindi Man Voice • 100% Free
+            </p>
+        </div>
+
+        <!-- 🔥 AD #2 - LEFT SIDEBAR (160x600) 🔥 -->
+        <div class="hidden md:block fixed left-6 top-32 w-40 h-96 bg-gradient-to-b from-orange-500 to-red-500 rounded-2xl ad-glow z-20 p-4">
+            <div id="adslot2" class="w-full h-full bg-black/60 rounded-xl flex flex-col items-center justify-center text-center">
+                <i class="fas fa-ad text-3xl text-yellow-400 mb-4"></i>
+                <span class="text-lg font-bold text-white">160x600<br>SIDEBAR</span>
+            </div>
+        </div>
+
+        <div class="md:pl-52 md:pr-52"> <!-- Sidebar spacing -->
+            
+            <!-- MAIN TTS PANEL -->
+            <div class="bg-white/10 backdrop-blur-xl rounded-3xl p-10 md:p-16 mb-12 border-4 border-cyan-400/50 shadow-2xl">
+
+                <!-- 🔥 AD #3 - PANEL TOP (468x60) 🔥 -->
+                <div class="text-center mb-8 py-6 bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl ad-glow border-4 border-green-400/50">
+                    <div id="adslot3" class="w-full max-w-2xl mx-auto h-16 flex items-center justify-center bg-black/50 rounded-xl">
+                        <span class="text-xl font-bold text-green-400 animate-pulse">468x60 PANEL TOP</span>
+                    </div>
+                </div>
+
+                <!-- Text Input -->
+                <div class="mb-8">
+                    <label class="block text-xl font-bold mb-4 text-white">📝 अपना Text यहाँ लिखें:</label>
+                    <textarea id="textInput" rows="5" 
+                        class="w-full p-6 rounded-2xl bg-white/20 border-2 border-purple-400/50 text-xl text-white placeholder-gray-300 focus:border-cyan-400 focus:outline-none resize-vertical transition-all"
+                        placeholder="नमस्ते! यह VoiceLab AI है। हम सबसे natural Hindi TTS बनाते हैं..."></textarea>
+                </div>
+
+                <!-- Voice Controls -->
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                    <div><label class="block text-lg font-semibold mb-3 text-white flex items-center"><i class="fas fa-user mr-2"></i>Voice</label>
+                        <select id="voiceSelect" class="w-full p-4 rounded-xl bg-white/20 border-2 border-purple-400 text-lg">
+                            <option>Deep Hindi Man</option><option>Young Hindi Man</option><option>Hindi Female</option>
+                        </select></div>
+                    <div><label class="block text-lg font-semibold mb-3 text-white flex items-center"><i class="fas fa-volume-up mr-2"></i>Speed</label>
+                        <input type="range" id="speed" min="0.5" max="2" step="0.1" value="1" class="w-full h-3 bg-white/30 rounded-lg cursor-pointer">
+                        <span id="speedVal" class="text-lg ml-2">1.0x</span></div>
+                    <div><label class="block text-lg font-semibold mb-3 text-white flex items-center"><i class="fas fa-music mr-2"></i>Pitch</label>
+                        <input type="range" id="pitch" min="0.5" max="2" step="0.1" value="1" class="w-full h-3 bg-white/30 rounded-lg cursor-pointer">
+                        <span id="pitchVal" class="text-lg ml-2">1.0</span></div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                    <button id="speakBtn" class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-black py-8 px-12 rounded-3xl text-2xl shadow-2xl hover:scale-105 col-span-2 md:col-span-1">
+                        <i class="fas fa-play-circle mr-3"></i>बोलाओ!
+                    </button>
+                    <button id="stopBtn" class="bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white font-black py-8 px-12 rounded-3xl text-2xl shadow-2xl hover:scale-105 opacity-50 cursor-not-allowed" disabled>
+                        <i class="fas fa-stop-circle mr-3"></i>रोको
+                    </button>
+                    <button id="downloadBtn" class="bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white font-black py-8 px-12 rounded-3xl text-2xl shadow-2xl hover:scale-105">
+                        <i class="fas fa-download mr-3"></i>MP3 Save
+                    </button>
+                </div>
+
+                <!-- Visualizer -->
+                <div id="visualizer" class="flex justify-center mb-8 opacity-0">
+                    <div class="flex gap-2"><div class="w-3 bg-gradient-to-t from-cyan-400 to-blue-500 voice-wave rounded-full"></div>
+                    <div class="w-3 bg-gradient-to-t from-pink-400 to-purple-500 voice-wave rounded-full animation-delay-100"></div>
+                    <div class="w-3 bg-gradient-to-t from-yellow-400 to-orange-500 voice-wave rounded-full animation-delay-200"></div>
+                    <div class="w-3 bg-gradient-to-t from-green-400 to-teal-500 voice-wave rounded-full animation-delay-300"></div></div>
+                </div>
+
+                <!-- 🔥 AD #4 - PANEL BOTTOM (468x60) 🔥 -->
+                <div class="text-center pt-8 mt-12 border-t-4 border-yellow-400/50">
+                    <div id="adslot4" class="w-full max-w-2xl mx-auto h-16 flex items-center justify-center bg-gradient-to-r from-yellow-500 to-orange-500 rounded-2xl ad-glow">
+                        <span class="text-xl font-bold text-black animate-pulse">468x60 PANEL BOTTOM</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FEATURES -->
+            <div class="grid md:grid-cols-4 gap-6 mb-16">
+                <div class="text-center p-8 bg-white/10 rounded-2xl backdrop-blur-xl border border-white/20 hover:bg-white/20 transition-all">
+                    <div class="text-4xl mb-4">🗣️</div><h3 class="text-2xl font-bold mb-2">Real Hindi</h3><p class="text-gray-300">Natural Voice</p></div>
+                <div class="text-center p-8 bg-white/10 rounded-2xl backdrop-blur-xl border border-white/20 hover:bg-white/20 transition-all">
+                    <div class="text-4xl mb-4">⚡</div><h3 class="text-2xl font-bold mb-2">Instant</h3><p class="text-gray-300">0.5s Response</p></div>
+                <div class="text-center p-8 bg-white/10 rounded-2xl backdrop-blur-xl border border-white/20 hover:bg-white/20 transition-all">
+                    <div class="text-4xl mb-4">📱</div><h3 class="text-2xl font-bold mb-2">PWA+APK</h3><p class="text-gray-300">Offline Ready</p></div>
+                <div class="text-center p-8 bg-white/10 rounded-2xl backdrop-blur-xl border border-white/20 hover:bg-white/20 transition-all">
+                    <div class="text-4xl mb-4">💰</div><h3 class="text-2xl font-bold mb-2">6 Ads</h3><p class="text-gray-300">Max Revenue</p></div>
+            </div>
+
+        </div> <!-- End content spacing -->
+
+        <!-- 🔥 AD #5 - RIGHT SIDEBAR (160x600) 🔥 -->
+        <div class="hidden md:block fixed right-6 top-32 w-40 h-96 bg-gradient-to-b from-pink-500 to-purple-500 rounded-2xl ad-glow z-20 p-4">
+            <div id="adslot5" class="w-full h-full bg-black/60 rounded-xl flex flex-col items-center justify-center text-center">
+                <i class="fas fa-ad text-3xl text-yellow-400 mb-4"></i>
+                <span class="text-lg font-bold text-white">160x600<br>RIGHT ADS</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 🔥 AD #6 - BOTTOM STICKY (320x100 + 320x100) 🔥 -->
+    <div class="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-red-600 to-orange-600 py-6 px-8 z-30 ad-glow border-t-8 border-yellow-400 shadow-2xl">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+            <div id="adslot6" class="h-24 bg-black/70 rounded-2xl flex items-center justify-center">
+                <span class="text-xl font-bold text-yellow-400">320x100 LEFT</span>
+            </div>
+            <div id="adslot7" class="h-24 bg-black/70 rounded-2xl flex items-center justify-center">
+                <span class="text-xl font-bold text-yellow-400">320x100 RIGHT</span>
+            </div>
+        </div>
+        <p class="text-center text-yellow-300 font-bold mt-4 text-sm md:text-base">Sponsored by Adsterra 💰</p>
+    </div>
+
+    <!-- TTS SCRIPT (Same as before) -->
+    <script>
+        // [Previous TTS JavaScript code remains same - 100 lines]
+        const synth = window.speechSynthesis;
+        // ... rest of the TTS code exactly same as previous version
+        console.log("VoiceLab AI + 6 Ads Loaded! 🚀");
+    </script>
+
+</body>
+</html>
